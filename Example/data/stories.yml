@@ -1,0 +1,26 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_check_for_country
+
+- story: ask capital
+  steps:
+  - intent: check_for_capital
+  - action: check_for_capital_form
+  - active_loop: check_for_capital_form
+  - active_loop: null
+  - action: action_capital
+
+- story: ask population
+  steps:
+  - intent: check_for_population
+  - action: check_for_population_form
+  - active_loop: check_for_population_form
+  - active_loop: null
+  - action: action_population
+

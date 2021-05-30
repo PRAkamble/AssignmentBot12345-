@@ -1,0 +1,68 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - out_of_scope
+  - check_for_population
+  - check_for_capital
+
+entities:
+  - LOC
+  - country
+  - GPE
+
+actions:
+  - validate_check_for_capital_form
+  - validate_check_for_population_form
+  - action_goodbye
+  - action_check_for_country
+  - action_population
+  - action_capital
+  
+slots:
+  LOC: 
+    type: text
+    influence_conversation: false
+  country: 
+    type: text
+    influence_conversation: false
+  countries: 
+    type: list
+    influence_conversation: false
+
+responses:
+
+  utter_default:
+  - text: Something went wrong!
+  
+  utter_greet:
+  - text: "Hello! Greeting of the day. How can I help you?"
+  - text: "Hi!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_ask_country:
+  - text: Could you please provide me country name {countries}?
+
+  utter_wrong_country:
+  - text: Please rephrase the country name?
+
+forms:
+  check_for_capital_form:
+    country:
+      - type: from_entity
+        entity: GPE
+
+  check_for_population_form:
+    country:
+      - type: from_entity
+        entity: GPE
+      
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
