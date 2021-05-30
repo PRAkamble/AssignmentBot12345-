@@ -1,5 +1,3 @@
-# AssignmentBot12345-
-
 # install python version 3.6
 
 # install required packages including rasa and supportive packages
